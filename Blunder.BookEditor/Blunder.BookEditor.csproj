@@ -125,6 +125,15 @@
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if "$(ConfigurationName)"=="Release" (
+    xcopy /Y "$(TargetPath)" "$(SolutionDir)Binary\Blunder.BookEditor\"
+    xcopy /Y "$(TargetPath).config" "$(SolutionDir)Binary\Blunder.BookEditor\"
+    xcopy /Y "$(TargetDir)log4net.dll" "$(SolutionDir)Binary\Blunder.BookEditor\"
+    xcopy /Y "$(TargetDir)ShogiCore.dll" "$(SolutionDir)Binary\Blunder.BookEditor\"
+    "$(SolutionDir)Binary\FolderToZip.exe" "$(SolutionDir)Binary\Blunder.BookEditor"
+)</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
