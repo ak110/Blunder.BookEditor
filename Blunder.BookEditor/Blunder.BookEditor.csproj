@@ -127,11 +127,12 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>if "$(ConfigurationName)"=="Release" (
-    xcopy /Y "$(TargetPath)" "$(SolutionDir)Binary\Blunder.BookEditor\"
-    xcopy /Y "$(TargetPath).config" "$(SolutionDir)Binary\Blunder.BookEditor\"
-    xcopy /Y "$(TargetDir)log4net.dll" "$(SolutionDir)Binary\Blunder.BookEditor\"
-    xcopy /Y "$(TargetDir)ShogiCore.dll" "$(SolutionDir)Binary\Blunder.BookEditor\"
-    "$(SolutionDir)Binary\FolderToZip.exe" "$(SolutionDir)Binary\Blunder.BookEditor"
+    xcopy /D /Y "$(TargetPath)" "$(ProjectDir)..\Binary\Blunder.BookEditor\"
+    xcopy /D /Y "$(TargetPath).config" "$(ProjectDir)..\Binary\Blunder.BookEditor\"
+    xcopy /D /Y "$(TargetDir)log4net.dll" "$(ProjectDir)..\Binary\Blunder.BookEditor\"
+    xcopy /D /Y "$(TargetDir)ShogiCore.dll" "$(ProjectDir)..\Binary\Blunder.BookEditor\"
+    xcopy /D /Y "$(ProjectDir)..\..\ShogiCore\log4net\*.txt" "$(ProjectDir)..\Binary\ShogiBoard\log4net\"
+    "$(ProjectDir)..\Binary\FolderToZip.exe" "$(ProjectDir)..\Binary\Blunder.BookEditor"
 )</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
