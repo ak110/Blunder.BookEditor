@@ -135,7 +135,7 @@ namespace ShogiCore.Book {
                             tmp.Value = (short)Math.Max(Math.Sqrt(tmp.Value), 1);
                             resultList[i] = tmp;
                         }
-                        sum = LinqEmu.Sum(resultList, x => (int)x.Value);
+                        sum = resultList.Sum(x => (int)x.Value);
                     } else {
                         sum = LastHitCount;
                     }
